@@ -28,7 +28,8 @@ export class PostService{
 
     updatePost(post:Post){
         const postData={
-            [(post?.id ?? '').toString()]:{title:post.title,description:post.description},
+            [post?.id??'']: { title: post.title, description: post.description },
+            // [(post?.id ?? '').toString()]:{title:post.title,description:post.description},
         }
         console.log("post data",postData);
         

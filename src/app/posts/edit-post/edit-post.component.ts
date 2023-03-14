@@ -23,7 +23,7 @@ export class EditPostComponent implements OnInit,OnDestroy {
     this.createForm();
     this.postSubscription=this.store.select(getPostById).subscribe((post)=>{
       if(post){
-      this.post!=post;
+      this.post=post;
       this.postForm.patchValue({
         title:post?.title,
         description:post?.description,
@@ -37,8 +37,9 @@ export class EditPostComponent implements OnInit,OnDestroy {
     //     this.post= data;
     //     this.createForm();
     //   })
-    // })
+    // }) 
   }
+
   createForm(){
     this.postForm= new FormGroup({
       title:new FormControl(null,[
@@ -64,10 +65,8 @@ export class EditPostComponent implements OnInit,OnDestroy {
       title:this.postForm.value.title,
       description:this.postForm.value.description
     }
-    console.log("post",post);
     
     this.store.dispatch(updatePost({post}));
-    console.log(post);
     this.router.navigate(['/post']);
 
   }
