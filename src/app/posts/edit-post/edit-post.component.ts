@@ -23,7 +23,7 @@ export class EditPostComponent implements OnInit,OnDestroy {
     this.createForm();
     this.postSubscription=this.store.select(getPostById).subscribe((post)=>{
       if(post){
-      this.post!=post;
+      this.post=post;
       this.postForm.patchValue({
         title:post?.title,
         description:post?.description,
