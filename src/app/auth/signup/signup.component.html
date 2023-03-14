@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h3>SignUp</h3>
+      <hr />
+      <form [formGroup]="signUpForm" (ngSubmit)="onSignUpSubmit()">
+        <div class="mb-3">
+          <label>Email</label>
+          <input type="email" class="formControl" formControlName="email" />
+          <div *ngIf="signUpForm.get('email')?.touched && !signUpForm.get('email')?.valid">
+            <div *ngIf="signUpForm.get('email')?.errors?.['required']">
+                Email is Required
+            </div>
+            <div *ngIf="signUpForm.get('email')?.errors?.['valid']">
+                Invalid Email Id
+            </div>
+        </div>
+        </div>
+        <div class="mb-3">
+          <label>Password</label>
+          <input
+            type="password"
+            class="formControl"
+            formControlName="password"
+          />
+          <div *ngIf="signUpForm.get('password')?.touched && !signUpForm.get('password')?.valid">
+            <div *ngIf="signUpForm.get('password')?.errors?.['required']">
+                Password is Required..
+            </div>
+        </div>
+        </div>
+        <div class="mb-3">
+          &nbsp;
+          <button type="submit" class="btn btn-primary" [disabled]="!signUpForm.valid">SignUp</button>
+          &nbsp;
+          <button type="cancel" class="btn btn-danger" [routerLink]="['/']">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
